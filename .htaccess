@@ -1,0 +1,18 @@
+php_value upload_max_filesize 10M
+php_value post_max_size 11M
+php_value max_execution_time 30
+
+
+##RewriteEngine On
+#Checks to see if the user is attempting to access a valid file,
+#such as an image or css document, if this isn't true it sends the
+#request to index.php
+##RewriteCond %{REQUEST_FILENAME} !-f
+##RewriteCond %{REQUEST_FILENAME} !-d
+#This last condition enables access to the images and css folders, and the robots.txt file
+##RewriteCond $1 !^(index.php|images|css|js|bootstrap|robots.txt)
+##RewriteRule ^(.*)$ /imfitt/index.php/$1 [L]
+
+RewriteEngine on 
+RewriteCond $1 !^(index.php|images|css|js|bootstrap|googleec9368c720dc006f.html|robots.txt)
+RewriteRule ^(.*)$ index.php/$1 [L]
